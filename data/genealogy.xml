@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?oxygen RNGSchema="genealogy.rnc" type="compact"?>
-<!-- last modified 2016-11-16 by JJG-->
+<!-- last modified 2026-10-30 by djb, migration to eXist-db app without php -->
 <?xml-model href="genealogy.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <root>
   <persons>
