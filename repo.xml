@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta
+    xmlns="http://exist-db.org/xquery/repo">
+    <description>Genealogy of Kievan Rus′</description>
+    <author>David J. Birnbaum</author>
+    <website>http://www.obdurodon.org</website>
+    <status>alpha</status>
+    <license>MIT</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>genealogy</target>
+    <prepare>pre-install.xq</prepare>
+    <finish/>
+</meta>
