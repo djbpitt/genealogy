@@ -1,0 +1,10 @@
+start = note
+note = element note {title,p+}
+title = element title {(text | link)*}
+p = element p {(text | bookTitle | articleTitle | fn | link)*}
+bookTitle = element bookTitle {text}
+articleTitle = element articleTitle {text}
+fn = element fn {fn_p+}
+fn_p = element fn_p {(text | bookTitle | articleTitle | link)*}
+link = element link {target, text}
+target = attribute target {text}

@@ -1,0 +1,79 @@
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+# last modified 2011-05-23 by car
+start = root
+root = element root { persons , marriages, bibliography}
+persons = element persons {person+}
+person = element person { person.attributes, name, parents?, dates, ruled*, note?, chart? }
+person.attributes = id, origin
+origin =
+  attribute origin {
+    "Rus'"
+    | "Sweden"
+    | "Abkhaz"
+    | "Croatia"
+    | "Serbia"
+    | "Byzantium"
+    | "Scotland"
+    | "the German Empire"
+    | "France"
+    | "England"
+    | "Poland"
+    | "Hungary"
+    | "Polovtsy"
+    | "Pomerania"
+    | "Norway"
+    | "Denmark"
+    | "Bohemia"
+    | "Wendland"
+    | "Ossetia"
+    | "unknown"
+  }
+name = element name { firstName, epithet?, patronymic?, christian?, source* }
+
+firstName = element firstName { text }
+epithet = element epithet { text }
+patronymic = element patronymic { text }
+christian = element christian {text}
+
+parents = element parents {parent.attributes, father, mother }
+father = element father { parent.attributes, parentName, source+ }
+mother = element mother { parent.attributes, parentName , source+}
+parent.attributes = pointer?
+parentName = element parentName { text }
+
+dates = element dates {birth, death}
+birth = element birth {birthDate, source*}
+birthDate = element birthDate {date}
+death = element death {deathDate, source*}
+deathDate = element deathDate {date}
+
+ruled = element ruled {title*, place, startYear, endYear}
+title = element title {text}
+place = element place {text}
+startYear = element startYear {date, source*}
+endYear = element endYear {date, source*}
+
+marriages = element marriages {marriage+}
+marriage = element marriage {marriage.attributes, marriageDate, children?, note?}
+marriage.attributes = id, attribute male {xsd:IDREF}, attribute female {xsd:IDREF}, attribute status {"wife" | "concubine" | "unknown"}
+marriageDate = element marriageDate {date, source+}
+children = element children {child+}
+child = element child {child.attributes, empty}
+child.attributes = pointer
+
+bibliography = element bibliography {bibItem+}
+bibItem = element bibItem {bibItem.attributes, text}
+bibItem.attributes = id
+
+date = element date {date.attributes, ("unknown" | "incomplete" | xsd:date | xsd:gYear | xsd:gYearMonth)}
+date.attributes = attribute circa {"circa" | "exact" | "conjecture" | "pre-" | "post-"}
+
+id = attribute id {xsd:ID}
+pointer = attribute pointer {xsd:IDREF}
+source = element source {pointer, text}
+
+note = element note {note.attributes, empty}
+note.attributes = attribute link {text}
+
+chart = element chart {chart.attributes, empty}
+chart.attributes = attribute link {text}
