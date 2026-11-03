@@ -1,0 +1,262 @@
+/*
+ * min-height setting plus flex on <main> forces footer to bottom of short pages
+ */
+:root {
+    --page-background-color: #f4eee2;
+    --page-accent-color: #a00000;
+    --page-line-height: 1.4em;
+}
+body {
+    background-color: var(--page-background-color);
+    line-height: var(--page-line-height);
+    padding: 0 .5em;
+    display: flex;
+    flex-direction: column;
+    min-height: 98vh;
+}
+main {
+    flex: 1;
+}
+img {
+    /* Fluid responsive scaling capped at 100% of container */
+    width: clamp(280px, 60vw, 720px);
+    max-width: 100%; /* Prevents overflow if container is smaller than clamp-min */
+    height: auto;
+}
+/* Utility class for inline SVGs/icons that should follow text sizing */
+img.inline-svg {
+    height: 1em; /* Matches the exact line height/font size of the text */
+    width: auto; /* Automatically adjusts width to maintain the aspect ratio */
+    vertical-align: -0.15em; /* Aligns the icon baseline nicely with text */
+}
+/* Custom class for small inline badges or icons, used for CC link */
+img.small-badge {
+    width: auto; /* Renders at 88px (or smaller if forced by container) */
+    max-width: 100%; /* Safeguard so it never overflows tiny mobile screens */
+    height: auto; /* Preserves the 88:31 ratio calculated from HTML attributes */
+}
+img {
+  /* Fluid responsive scaling capped at 100% of container */
+  width: clamp(280px, 60vw, 720px);
+  max-width: 100%; /* Prevents overflow if container is smaller than clamp-min */
+  height: auto;
+}
+.inset {
+    max-width: 298px;
+    width: 40%;
+    float: right;
+    margin: 0 0 1em 1em;
+    border: none;
+}
+/*
+ * semi-hierarchical numbering
+ * TODO: revise with counters or real hierarchical section numbers
+ */
+ol {
+    list-style-type: decimal;
+}
+ol ol {
+    list-style-type: lower-alpha;
+}
+ol ol ol {
+    list-style-type: decimal;
+}
+/*
+ * Minor information
+ * List of filenames in all-fqname report
+ */
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.logo {
+    color: var(--page-accent-color)
+}
+aside {
+    /*    font-size: smaller;*/
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
+    align-items: center;
+}
+/*
+ * <Footer> holds credits and copyright information
+ * Only <hr> is at top of <footer>
+ */
+footer {
+    display: block;
+    font-size: smaller;
+}
+footer > p {
+    margin-bottom: 0;
+}
+/*
+ * Search form
+ */
+#fqname-search { /* <form> */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: .5em;
+}
+#query-term {
+    width: 100%;
+}
+#search-results-header {
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
+    align-items: center;
+    ;
+}
+.info {
+    position: relative;
+}
+.info > .tooltip {
+    display: none;
+    background: #e5f5f9;
+    border: #2ca25f solid .2em;
+    border-radius: .5em;
+    padding: .5em .5em .5em 1.25em;
+}
+.info:hover > .tooltip {
+    display: inline-block;
+    position: absolute;
+    left: -16em;
+    ;
+    width: 15em;
+}
+/*
+ * Comparison query and report
+ */
+#compare {
+    /* Two columns: mss and everything else (dates, nationality, sex) */
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: flex-start;
+    width: fit-content;
+    margin-top: .5em;
+    border: 1px solid black;
+    padding: 0.5em 1em 1em;
+}
+#compare-select-mss {
+    /* Button row on top, then list */
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+#compare-select-mss > div {
+    /* Button row: Select and Deselect all */
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+#compare-select-mss > ul,
+#nationalities > ul,
+#sex > ul {
+    /* Checkboxes (mss) or radio buttons (nationality, 
+  sex) take the place of bullets*/
+    padding: 0 0.5em 0 0;
+    list-style-type: none;
+}
+#compare-select-misc {
+    /* Dates, nationality, sex */
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+#start-date,
+#end-date {
+    /* Two dropdowns each, for month and day */
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+.yes {
+    background-color: lightgreen;
+}
+.no {
+    background-color: lightpink;
+}
+/*
+ * Global
+ */
+table,
+tr,
+th,
+td {
+    border: 1px gray solid;
+    border-collapse: collapse;
+}
+table {
+    margin-top: 1em;
+}
+th,
+td {
+    padding: .25em .5em;
+}
+hr {
+    border: 0;
+    height: 2px;
+    background: lightgray;
+}
+.os {
+    font-family: "Menaion Medieval";
+}
+.saint {
+    color: red;
+}
+.saintSet {
+    color: blue;
+}
+.event {
+    color: green;
+}
+.note {
+    color: gray;
+}
+.dateRow {
+    background-color: lightGray;
+}
+q {
+    quotes: '“' '”' '‘' '’';
+}
+/*
+ * Reading view
+ */
+.citation-metadata {
+    font-size: smaller;
+    color: gray;
+    border: 1px gray solid;
+    padding: .25em .5em;
+    line-height: 1.2em;
+    background-color: #f3fdff;
+}
+.citation-metadata > .saint {
+    color: orangered;
+}
+.citation-metadata > .saintSet {
+    color: royalblue;
+}
+.citation-metadata > .event {
+    color: seagreen;
+}
+.citation-metadata a {
+    color: dodgerblue;
+}
+/* 
+ * About
+ */
+#banica-reading {
+    width: 30em;
+    border: 1px gray solid;
+    padding: .5em;
+}
+#simeon-stylite {
+    width: 40em;
+    border: 1px gray solid;
+    padding: .5em;
+}
