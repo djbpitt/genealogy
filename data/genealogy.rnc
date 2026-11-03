@@ -68,7 +68,7 @@ bibItem.attributes = id
 date = element date {date.attributes, ("unknown" | "incomplete" | xsd:date | xsd:gYear | xsd:gYearMonth)}
 date.attributes = attribute circa {"circa" | "exact" | "conjecture" | "pre-" | "post-"}
 
-id = attribute id {xsd:ID}
+id = attribute xml:id {xsd:ID}
 pointer = attribute pointer {xsd:IDREF}
 source = element source {pointer, text}
 
